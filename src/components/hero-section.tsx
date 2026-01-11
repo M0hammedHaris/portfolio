@@ -16,6 +16,14 @@ export function HeroSection() {
                 transition={{ duration: 0.5 }}
                 className="space-y-4 max-w-3xl"
             >
+                <div className="mx-auto w-32 h-32 relative mb-8 rounded-full overflow-hidden border-4 border-background shadow-xl">
+                    <img
+                        src={DATA.avatarUrl}
+                        alt={DATA.name}
+                        className="object-cover w-full h-full"
+                    />
+                </div>
+
                 <span className="text-sm font-medium text-muted-foreground tracking-wider uppercase">
                     Welcome to my portfolio
                 </span>

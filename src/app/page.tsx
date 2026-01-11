@@ -5,9 +5,12 @@ import { ProjectsSection } from '@/components/projects-section';
 import { EducationSection } from '@/components/education-section';
 import { ContactSection } from '@/components/contact-section';
 
+import { Navbar } from '@/components/navbar';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/20">
+      <Navbar />
       <HeroSection />
       <AboutSection />
       <ExperienceSection />
