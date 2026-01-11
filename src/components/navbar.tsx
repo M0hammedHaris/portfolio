@@ -5,6 +5,8 @@ import { DATA } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
+import { ModeToggle } from "@/components/mode-toggle";
+
 export function Navbar() {
     const pathname = usePathname();
 
@@ -49,6 +51,7 @@ export function Navbar() {
                 </div>
                 <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
                     <span className="md:hidden font-bold text-xl">{DATA.initials}</span>
+                    <ModeToggle />
                 </div>
             </div>
         </header>
