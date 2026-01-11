@@ -85,7 +85,7 @@ export function ContactSection() {
                                     <div className="space-y-2">
                                         <Textarea placeholder="Your Message" className="min-h-[120px]" />
                                     </div>
-                                    <Button className="w-full">Send Message</Button>
+                                    <Button className="w-full shadow-lg hover:shadow-xl transition-all">Send Message</Button>
                                 </form>
                             </CardContent>
                         </Card>
