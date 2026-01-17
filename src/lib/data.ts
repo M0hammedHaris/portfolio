@@ -50,6 +50,12 @@ export const DATA = {
   },
   projects: [
     {
+      title: "Snapchat Organizer",
+      description: "A Desktop application to organize your snapchat memories and chat medias.",
+      tech: ["Python", "PySide6", "SQLite", "PyQt6"],
+      link: "https://snapchat-organizer.machive.in",
+    },
+    {
       title: "SalaryMan",
       description: "Comprehensive salary management app with multi-account tracking, financial alerts, and analytics.",
       tech: ["Next.js 15", "NeonDB", "Clerk", "Tailwind CSS"],
@@ -72,12 +78,6 @@ export const DATA = {
       description: "Inventory and billing management system tailored for pharmacies.",
       tech: ["Frappe", "Python", "JavaScript"],
       link: "https://github.com/crio-tech/pharma",
-    },
-    {
-      title: "Apparelo",
-      description: "Manufacturing workflow management system for the garment industry.",
-      tech: ["Frappe", "Python", "ERPNext"],
-      link: "https://github.com/aerele/apparelo",
     },
     {
       title: "Frappe Framework",

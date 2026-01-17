@@ -31,17 +31,17 @@ export function ContactSection() {
                     <form className="space-y-4 bg-background p-8 rounded-3xl shadow-lg border border-border-subtle" onSubmit={(e) => e.preventDefault()}>
                         <div>
                             <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">Name</label>
-                            <input type="text" className="w-full bg-surface border border-border-subtle rounded-lg px-4 py-3 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="John Doe" />
+                            <input type="text" className="w-full bg-surface border border-border-subtle rounded-lg px-4 py-3 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary-hover transition-all" placeholder="John Doe" />
                         </div>
                         <div>
                             <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">Email</label>
-                            <input type="email" className="w-full bg-surface border border-border-subtle rounded-lg px-4 py-3 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="john@example.com" />
+                            <input type="email" className="w-full bg-surface border border-border-subtle rounded-lg px-4 py-3 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary-hover transition-all" placeholder="john@example.com" />
                         </div>
                         <div>
                             <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">Message</label>
-                            <textarea className="w-full bg-surface border border-border-subtle rounded-lg px-4 py-3 text-text-main h-32 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none" placeholder="Tell me about your project..."></textarea>
+                            <textarea className="w-full bg-surface border border-border-subtle rounded-lg px-4 py-3 text-text-main h-32 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary-hover transition-all resize-none" placeholder="Tell me about your project..."></textarea>
                         </div>
-                        <button type="submit" className="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 transition-all active:translate-y-0 text-sm uppercase tracking-wide">
+                        <button type="submit" className="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 hover:bg-primary-hover hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 transition-all active:translate-y-0 text-sm uppercase tracking-wide">
                             Send Message
                         </button>
                     </form>

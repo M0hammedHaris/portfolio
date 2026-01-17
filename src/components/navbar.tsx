@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export function Navbar() {
     const { setTheme, theme } = useTheme();
@@ -24,7 +25,7 @@ export function Navbar() {
         <nav className="fixed top-0 w-full z-50 border-b border-border-subtle bg-background/95 backdrop-blur-md transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div className="flex items-center gap-12">
-                    <Link href="/" className="text-xl font-bold tracking-tighter text-gradient-blue">
+                    <Link href="/" className="text-xl font-bold tracking-tighter text-gradient-primary">
                         MH
                     </Link>
                     <div className="hidden md:flex gap-8 text-sm font-bold text-foreground uppercase tracking-wider">
@@ -35,24 +36,45 @@ export function Navbar() {
                     </div>
                 </div>
                 <div className="flex items-center gap-6">
-                    <Link href="#contact" className="hidden sm:block text-xs font-bold uppercase tracking-widest text-primary border-b-2 border-primary/20 hover:border-primary transition-all pb-0.5">
+                    <Link href="#contact" className="hidden sm:block text-xs font-bold uppercase tracking-widest text-primary border-b-2 border-primary/20 hover:border-primary-hover transition-all pb-0.5">
                         Hire Me
                     </Link>
                     <div className="h-6 w-px bg-slate-200 hidden sm:block dark:bg-slate-700"></div>
                     <button
                         onClick={toggleTheme}
                         aria-label="Toggle dark mode"
-                        className="relative w-14 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center p-1 transition-all hover:border-primary/30 group dark:bg-slate-800 dark:border-slate-700"
+                        className="relative w-16 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center p-1 transition-all hover:border-primary/30 group dark:bg-slate-800 dark:border-slate-700 overflow-hidden"
                     >
-                        <div className={`absolute w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out ${theme === 'dark' ? 'translate-x-7 bg-primary' : 'translate-x-0 bg-white border border-yellow-200 shadow-sm'}`}>
-                            <span className={`material-symbols-outlined text-[12px] transition-colors ${theme === 'dark' ? 'text-white' : 'text-yellow-500'}`}>
+                        {/* Background Icons */}
+                        <div className="flex w-full justify-between items-center px-1 gap-1 text-slate-300 dark:text-slate-500">
+                            <span className="material-symbols-outlined text-[6px]">light_mode</span>
+                            <span className="material-symbols-outlined text-[6px]">dark_mode</span>
+                        </div>
+
+                        {/* Animated Toggle Circle */}
+                        <motion.div
+                            initial={false}
+                            animate={{
+                                x: theme === 'dark' ? 30 : 0,
+                                backgroundColor: theme === 'dark' ? '#FF7F50' : '#ffffff',
+                            }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 500,
+                                damping: 30
+                            }}
+                            className={`absolute w-5 h-5 rounded-full flex items-center justify-center shadow-sm z-10 ${theme === 'light' ? 'border border-yellow-200' : ''}`}
+                        >
+                            <motion.span
+                                key={theme}
+                                initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.2 }}
+                                className={`material-symbols-outlined text-[12px] ${theme === 'dark' ? 'text-white' : 'text-yellow-500'}`}
+                            >
                                 {theme === 'dark' ? 'dark_mode' : 'light_mode'}
-                            </span>
-                        </div>
-                        <div className="flex w-full justify-between items-center px-1 text-slate-300 dark:text-slate-500">
-                            <span className="material-symbols-outlined text-[10px]">light_mode</span>
-                            <span className="material-symbols-outlined text-[10px]">dark_mode</span>
-                        </div>
+                            </motion.span>
+                        </motion.div>
                     </button>
                 </div>
             </div>

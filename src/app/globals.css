@@ -6,6 +6,7 @@
     --color-foreground: var(--text-main);
 
     --color-primary: var(--primary);
+    --color-primary-hover: var(--primary-hover);
     --color-midnight: var(--midnight);
     --color-card-bg: var(--card-bg);
     --color-surface: var(--surface);
@@ -21,7 +22,8 @@
 }
 
 :root {
-    --primary: #2563eb;
+    --primary: #FF7F50;
+    --primary-hover: #FF6347;
     --midnight: #0f172a;
     --bg-canvas: #ffffff;
     --card-bg: #f8fafc;
@@ -29,11 +31,12 @@
     --border-subtle: #e2e8f0;
     --text-main: #1e293b;
     --text-muted: #64748b;
-    --sun-glow: rgba(253, 224, 71, 0.4);
+    --sun-glow: rgba(255, 127, 80, 0.4);
 }
 
 .dark {
-    --primary: #3b82f6;
+    --primary: #FF7F50;
+    --primary-hover: #FF6347;
     --midnight: #f8fafc;
     --bg-canvas: #0f172a;
     --card-bg: #1e293b;
@@ -65,8 +68,8 @@
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
     }
 
-    .text-gradient-blue {
-        background: linear-gradient(to right, var(--primary), #3b82f6);
+    .text-gradient-primary {
+        background: linear-gradient(to right, var(--primary), var(--primary-hover));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
