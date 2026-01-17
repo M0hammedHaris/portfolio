@@ -1,53 +1,50 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, FileText } from 'lucide-react';
+import Link from 'next/link';
 import { DATA } from '@/lib/data';
 
 export function HeroSection() {
     return (
-        <section className="min-h-screen flex flex-col justify-center items-center text-center p-4 relative overflow-hidden bg-background">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-background to-background" />
-
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="space-y-4 max-w-3xl"
-            >
-                <div className="mx-auto w-32 h-32 relative mb-8 rounded-full overflow-hidden border-4 border-background shadow-xl">
-                    <img
-                        src={DATA.avatarUrl}
-                        alt={DATA.name}
-                        className="object-cover w-full h-full"
-                    />
-                </div>
-
-                <span className="text-sm font-medium text-muted-foreground tracking-wider uppercase">
-                    Welcome to my portfolio
-                </span>
-                <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-foreground">
-                    Hi, I&apos;m <span className="text-primary">{DATA.name}</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-muted-foreground max-w-[600px] mx-auto">
-                    {DATA.title}
-                </p>
-                <p className="text-md text-muted-foreground/80 max-w-[500px] mx-auto">
-                    Building robust product systems with backend mastery and modern frontend experiences.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                    <Button size="lg" className="rounded-full" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-                        View Projects <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                    <Button size="lg" variant="outline" className="rounded-full" asChild>
-                        <a href="mailto:mohammedharis.k.01@gmail.com">
-                            Contact Me <FileText className="ml-2 w-4 h-4" />
-                        </a>
-                    </Button>
-                </div>
-            </motion.div>
+        <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden bg-background">
+            <div className="absolute inset-0 grid-lines-light -z-10"></div>
+            <div className="max-w-4xl mx-auto px-6 text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <div className="mb-8 relative inline-block">
+                        <div className="absolute inset-0 bg-primary/10 rounded-full blur-2xl"></div>
+                        <img
+                            alt={DATA.name}
+                            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-xl"
+                            src={DATA.avatarUrl}
+                        />
+                    </div>
+                    <p className="text-primary font-mono text-xs tracking-[0.2em] uppercase mb-4 font-bold">FULL STACK DEVELOPER</p>
+                    <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight text-midnight">
+                        Hi, I&apos;m <span className="text-gradient-blue">{DATA.name}</span>
+                    </h1>
+                    <p className="text-xl md:text-2xl text-slate-600 mb-4 font-medium dark:text-slate-400">
+                        Architecting robust systems & elegant interfaces
+                    </p>
+                    <p className="max-w-2xl mx-auto text-slate-500 mb-10 text-lg leading-relaxed dark:text-slate-400">
+                        {DATA.bio}
+                    </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <Link href="#projects" className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30">
+                            View Projects <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                        </Link>
+                        <Link href="#contact" className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-midnight font-bold rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:hover:bg-slate-700">
+                            Get in Touch <span className="material-symbols-outlined text-sm">chat_bubble</span>
+                        </Link>
+                    </div>
+                </motion.div>
+            </div>
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-30">
+                <span className="material-symbols-outlined text-midnight animate-bounce dark:text-white">expand_more</span>
+            </div>
         </section>
     );
 }
