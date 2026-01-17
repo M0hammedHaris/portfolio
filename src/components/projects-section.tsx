@@ -1,10 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Github, ExternalLink } from 'lucide-react';
 import { DATA } from '@/lib/data';
 
 const container = {
@@ -24,44 +20,44 @@ const item = {
 
 export function ProjectsSection() {
     return (
-        <section id="projects" className="py-20 px-4 bg-background">
-            <div className="max-w-6xl mx-auto space-y-12">
-                <div className="text-center space-y-4">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">SaaS & Projects</h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto">
-                        Innovating with purpose. Check out my latest SaaS experiments and engineering projects.
-                    </p>
+        <section className="py-24" id="projects">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-midnight">SaaS & Innovation</h2>
+                    <div className="h-1.5 w-16 bg-primary mx-auto rounded-full"></div>
+                    <p className="mt-6 text-text-muted max-w-xl mx-auto">Exploring the intersection of performance and utility through custom-built software solutions.</p>
                 </div>
-
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {DATA.projects.map((project, index) => (
-                        <motion.div key={index} variants={item}>
-                            <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 border-muted-foreground/10">
-                                <CardHeader>
-                                    <CardTitle className="text-xl">{project.title}</CardTitle>
-                                    <CardDescription>{project.description}</CardDescription>
-                                </CardHeader>
-                                <CardContent className="flex-grow">
-                                    <div className="flex flex-wrap gap-2 mt-2">
-                                        {project.tech.map(t => (
-                                            <Badge key={t} variant="secondary" className="text-xs">{t}</Badge>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                                <CardFooter>
-                                    <Button variant="outline" size="sm" className="w-full" asChild>
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                            View Project <ExternalLink className="ml-2 w-3 h-3" />
-                                        </a>
-                                    </Button>
-                                </CardFooter>
-                            </Card>
+                        <motion.div key={index} variants={item} className="group soft-card rounded-2xl overflow-hidden flex flex-col">
+                            <div className={`h-48 flex items-center justify-center border-b border-border-subtle ${index % 2 === 0 ? 'bg-primary/5' : 'bg-surface/50'}`}>
+                                <span className={`material-symbols-outlined text-6xl ${index % 2 === 0 ? 'text-primary/30' : 'text-text-muted/30'}`}>
+                                    {index === 0 ? 'account_balance_wallet' : index === 1 ? 'shopping_bag' : 'security'}
+                                </span>
+                            </div>
+                            <div className="p-8 flex-1 flex flex-col">
+                                <h3 className="text-xl font-bold mb-3 text-midnight">{project.title}</h3>
+                                <p className="text-sm text-text-main opacity-80 mb-6 leading-relaxed">{project.description}</p>
+                                <div className="flex flex-wrap gap-2 mb-8">
+                                    {project.tech.map(t => (
+                                        <span key={t} className="text-[10px] font-bold uppercase px-2 py-1 bg-background border border-border-subtle rounded text-text-muted">{t}</span>
+                                    ))}
+                                </div>
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-primary group-hover:gap-3 transition-all"
+                                >
+                                    {project.link.includes('github') ? 'View Code' : 'Live Demo'} <span className="material-symbols-outlined text-sm">arrow_outward</span>
+                                </a>
+                            </div>
                         </motion.div>
                     ))}
                 </motion.div>

@@ -1,27 +1,21 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import type { Metadata } from "next";
-import { DM_Sans, Space_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const fontSans = DM_Sans({
-  variable: "--font-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-display",
   subsets: ["latin"],
 });
 
-const fontMono = Space_Mono({
+const jetBrainsMono = JetBrains_Mono({
   variable: "--font-mono",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const fontSerif = DM_Sans({
-  variable: "--font-serif",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Mohammed Haris",
-  description: "Software Engineer | Full Stack Developer",
+  title: "Mohammed Haris | Full Stack Engineer",
+  description: "Architecting robust systems & elegant interfaces",
 };
 
 export default function RootLayout({
@@ -31,13 +25,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+      </head>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} ${fontSerif.variable} antialiased`}
+        className={`${plusJakartaSans.variable} ${jetBrainsMono.variable} font-display antialiased`}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}

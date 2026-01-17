@@ -1,66 +1,83 @@
 'use client';
 
 import Link from 'next/link';
-import { DATA } from '@/lib/data';
-import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
-import { ModeToggle } from "@/components/mode-toggle";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export function Navbar() {
-    const pathname = usePathname();
+    const { setTheme, theme } = useTheme();
+    const [mounted, setMounted] = useState(false);
 
-    const NavLinks = () => (
-        <>
-            <Link
-                href="#projects"
-                className={cn(
-                    "transition-colors hover:text-foreground/80",
-                    pathname === "/#projects" ? "text-foreground" : "text-foreground/60"
-                )}
-            >
-                Projects
-            </Link>
-            <Link
-                href="#about"
-                className={cn(
-                    "transition-colors hover:text-foreground/80",
-                    pathname === "/#about" ? "text-foreground" : "text-foreground/60"
-                )}
-            >
-                About
-            </Link>
-            <Link
-                href="#contact"
-                className={cn(
-                    "transition-colors hover:text-foreground/80",
-                    pathname === "/#contact" ? "text-foreground" : "text-foreground/60"
-                )}
-            >
-                Contact
-            </Link>
-        </>
-    );
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const toggleTheme = () => {
+        setTheme(theme === "dark" ? "light" : "dark");
+    };
+
+    if (!mounted) {
+        return null; // or a skeleton to avoid hydration mismatch
+    }
 
     return (
-        <header className="w-full border-b bg-background">
-            <div className="container flex h-14 items-center px-4 md:px-8 md:pl-20">
-                <div className="mr-4 hidden md:flex">
-                    <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <span className="hidden font-bold sm:inline-block text-xl text-primary">
-                            {DATA.initials}
-                        </span>
+        <nav className="fixed top-0 w-full z-50 border-b border-border-subtle bg-background/95 backdrop-blur-md transition-colors duration-300">
+            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+                <div className="flex items-center gap-12">
+                    <Link href="/" className="text-xl font-bold tracking-tighter text-gradient-primary">
+                        MH
                     </Link>
-                    <nav className="flex items-center space-x-6 text-sm font-medium">
-                        <NavLinks />
-                    </nav>
-                </div>
-                <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-                    <span className="md:hidden font-bold text-xl text-primary">{DATA.initials}</span>
-                    <div className="flex items-center gap-2">
-                        <ModeToggle />
+                    <div className="hidden md:flex gap-8 text-sm font-bold text-foreground uppercase tracking-wider">
+                        <Link href="#about" className="hover:text-primary transition-colors">About</Link>
+                        <Link href="#experience" className="hover:text-primary transition-colors">Experience</Link>
+                        <Link href="#projects" className="hover:text-primary transition-colors">Projects</Link>
+                        <Link href="#contact" className="hover:text-primary transition-colors">Contact</Link>
                     </div>
                 </div>
+                <div className="flex items-center gap-6">
+                    <Link href="#contact" className="hidden sm:block text-xs font-bold uppercase tracking-widest text-primary border-b-2 border-primary/20 hover:border-primary-hover transition-all pb-0.5">
+                        Hire Me
+                    </Link>
+                    <div className="h-6 w-px bg-slate-200 hidden sm:block dark:bg-slate-700"></div>
+                    <button
+                        onClick={toggleTheme}
+                        aria-label="Toggle dark mode"
+                        className="relative w-16 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center p-1 transition-all hover:border-primary/30 group dark:bg-slate-800 dark:border-slate-700 overflow-hidden"
+                    >
+                        {/* Background Icons */}
+                        <div className="flex w-full justify-between items-center px-1 gap-1 text-slate-300 dark:text-slate-500">
+                            <span className="material-symbols-outlined text-[6px]">light_mode</span>
+                            <span className="material-symbols-outlined text-[6px]">dark_mode</span>
+                        </div>
+
+                        {/* Animated Toggle Circle */}
+                        <motion.div
+                            initial={false}
+                            animate={{
+                                x: theme === 'dark' ? 30 : 0,
+                                backgroundColor: theme === 'dark' ? '#FF7F50' : '#ffffff',
+                            }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 500,
+                                damping: 30
+                            }}
+                            className={`absolute w-5 h-5 rounded-full flex items-center justify-center shadow-sm z-10 ${theme === 'light' ? 'border border-yellow-200' : ''}`}
+                        >
+                            <motion.span
+                                key={theme}
+                                initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.2 }}
+                                className={`material-symbols-outlined text-[12px] ${theme === 'dark' ? 'text-white' : 'text-yellow-500'}`}
+                            >
+                                {theme === 'dark' ? 'dark_mode' : 'light_mode'}
+                            </motion.span>
+                        </motion.div>
+                    </button>
+                </div>
             </div>
-        </header>
+        </nav>
     );
 }
