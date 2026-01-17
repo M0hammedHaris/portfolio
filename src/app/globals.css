@@ -2,45 +2,42 @@
 @import "tw-animate-css";
 
 @theme inline {
-  --color-background: var(--bg-canvas);
-  --color-foreground: var(--text-main);
-  /* --font-sans: var(--font-display); */
-  /* --font-mono: var(--font-mono); */
+    --color-background: var(--bg-canvas);
+    --color-foreground: var(--text-main);
 
-  --color-primary: var(--primary);
-  --color-midnight: var(--midnight);
-  --color-card-bg: var(--card-bg);
-  --color-border-subtle: var(--border-subtle);
-  --color-text-main: var(--text-main);
-  --color-text-muted: var(--text-muted);
-  --color-sun-glow: var(--sun-glow);
+    --color-primary: var(--primary);
+    --color-midnight: var(--midnight);
+    --color-card-bg: var(--card-bg);
+    --color-surface: var(--surface);
+    --color-border-subtle: var(--border-subtle);
+    --color-text-main: var(--text-main);
+    --color-text-muted: var(--text-muted);
+    --color-sun-glow: var(--sun-glow);
 
-  --font-display: "Plus Jakarta Sans", "sans-serif";
-  --font-mono: "JetBrains Mono", "monospace";
-  
-  --radius-2xl: 1.5rem;
+    --font-display: "Plus Jakarta Sans", "sans-serif";
+    --font-mono: "JetBrains Mono", "monospace";
+
+    --radius-2xl: 1.5rem;
 }
 
 :root {
-  --primary: #2563eb;
-  --midnight: #0f172a;
-  --bg-canvas: #ffffff;
-  --card-bg: #f8fafc;
-  --border-subtle: #e2e8f0;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --sun-glow: rgba(253, 224, 71, 0.4);
+    --primary: #2563eb;
+    --midnight: #0f172a;
+    --bg-canvas: #ffffff;
+    --card-bg: #f8fafc;
+    --surface: #f1f5f9;
+    --border-subtle: #e2e8f0;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --sun-glow: rgba(253, 224, 71, 0.4);
 }
 
 .dark {
-    /* Keeping existing dark mode variables as placeholders or fallback 
-       until user decides on dark mode specifics for this new design.
-       The provided design is primarily light mode. 
-    */
-    --primary: #3b82f6; 
-    --midnight: #f8fafc; /* Inverting for dark mode theory */
+    --primary: #3b82f6;
+    --midnight: #f8fafc;
     --bg-canvas: #0f172a;
     --card-bg: #1e293b;
+    --surface: #1e293b;
     --border-subtle: #334155;
     --text-main: #f1f5f9;
     --text-muted: #94a3b8;
@@ -49,27 +46,31 @@
 @layer utilities {
     .grid-lines-light {
         background-size: 40px 40px;
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-                          linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        background-image: linear-gradient(to right, var(--grid-color, rgba(0, 0, 0, 0.03)) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--grid-color, rgba(0, 0, 0, 0.03)) 1px, transparent 1px);
     }
-    
+
+    .dark .grid-lines-light {
+        --grid-color: rgba(255, 255, 255, 0.03);
+    }
+
     .soft-card {
         background: var(--card-bg);
         border: 1px solid var(--border-subtle);
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    
+
     .soft-card:hover {
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
     }
-    
+
     .text-gradient-blue {
         background: linear-gradient(to right, var(--primary), #3b82f6);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    
+
     .theme-toggle-shadow {
         box-shadow: 0 0 15px 2px var(--sun-glow);
     }

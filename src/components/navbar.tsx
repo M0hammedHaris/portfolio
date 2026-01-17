@@ -21,13 +21,13 @@ export function Navbar() {
     }
 
     return (
-        <nav className="fixed top-0 w-full z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md transition-colors duration-300 dark:bg-slate-900/95 dark:border-slate-800">
+        <nav className="fixed top-0 w-full z-50 border-b border-border-subtle bg-background/95 backdrop-blur-md transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div className="flex items-center gap-12">
                     <Link href="/" className="text-xl font-bold tracking-tighter text-gradient-blue">
                         MH
                     </Link>
-                    <div className="hidden md:flex gap-8 text-sm font-bold text-midnight uppercase tracking-wider">
+                    <div className="hidden md:flex gap-8 text-sm font-bold text-foreground uppercase tracking-wider">
                         <Link href="#about" className="hover:text-primary transition-colors">About</Link>
                         <Link href="#experience" className="hover:text-primary transition-colors">Experience</Link>
                         <Link href="#projects" className="hover:text-primary transition-colors">Projects</Link>
@@ -42,21 +42,17 @@ export function Navbar() {
                     <button
                         onClick={toggleTheme}
                         aria-label="Toggle dark mode"
-                        className="relative w-12 h-6 rounded-full bg-slate-100 border border-slate-200 flex items-center p-0.5 transition-all hover:border-yellow-400 group dark:bg-slate-800 dark:border-slate-700 dark:hover:border-slate-500"
+                        className="relative w-14 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center p-1 transition-all hover:border-primary/30 group dark:bg-slate-800 dark:border-slate-700"
                     >
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center transition-all ${theme === 'light' ? 'bg-white theme-toggle-shadow border border-yellow-200 translate-x-0' : 'translate-x-6 bg-slate-700 border border-slate-600'}`}>
-                            {theme === 'light' ? (
-                                <span className="material-symbols-outlined text-[14px] text-yellow-500 fill-1 font-bold">light_mode</span>
-                            ) : (
-                                <span className="material-symbols-outlined text-[12px] text-slate-300">dark_mode</span>
-                            )}
+                        <div className={`absolute w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out ${theme === 'dark' ? 'translate-x-7 bg-primary' : 'translate-x-0 bg-white border border-yellow-200 shadow-sm'}`}>
+                            <span className={`material-symbols-outlined text-[12px] transition-colors ${theme === 'dark' ? 'text-white' : 'text-yellow-500'}`}>
+                                {theme === 'dark' ? 'dark_mode' : 'light_mode'}
+                            </span>
                         </div>
-                        {theme === 'light' && (
-                            <span className="ml-auto mr-1.5 material-symbols-outlined text-[12px] text-slate-300">dark_mode</span>
-                        )}
-                        {theme === 'dark' && (
-                            <span className="mr-auto ml-1.5 material-symbols-outlined text-[12px] text-yellow-500">light_mode</span>
-                        )}
+                        <div className="flex w-full justify-between items-center px-1 text-slate-300 dark:text-slate-500">
+                            <span className="material-symbols-outlined text-[10px]">light_mode</span>
+                            <span className="material-symbols-outlined text-[10px]">dark_mode</span>
+                        </div>
                     </button>
                 </div>
             </div>

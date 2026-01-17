@@ -15,10 +15,10 @@ export function HeroSection() {
                     transition={{ duration: 0.5 }}
                 >
                     <div className="mb-8 relative inline-block">
-                        <div className="absolute inset-0 bg-primary/10 rounded-full blur-2xl"></div>
+                        <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl"></div>
                         <img
                             alt={DATA.name}
-                            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-xl"
+                            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background shadow-xl"
                             src={DATA.avatarUrl}
                         />
                     </div>
@@ -26,24 +26,24 @@ export function HeroSection() {
                     <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight text-midnight">
                         Hi, I&apos;m <span className="text-gradient-blue">{DATA.name}</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-slate-600 mb-4 font-medium dark:text-slate-400">
+                    <p className="text-xl md:text-2xl text-text-main mb-4 font-medium">
                         Architecting robust systems & elegant interfaces
                     </p>
-                    <p className="max-w-2xl mx-auto text-slate-500 mb-10 text-lg leading-relaxed dark:text-slate-400">
+                    <p className="max-w-2xl mx-auto text-text-muted mb-10 text-lg leading-relaxed">
                         {DATA.bio}
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="#projects" className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30">
+                        <Link href="#projects" className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/30">
                             View Projects <span className="material-symbols-outlined text-sm">arrow_forward</span>
                         </Link>
-                        <Link href="#contact" className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-midnight font-bold rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:hover:bg-slate-700">
+                        <Link href="#contact" className="w-full sm:w-auto px-8 py-4 bg-background border border-border-subtle text-foreground font-bold rounded-xl hover:bg-surface transition-colors flex items-center justify-center gap-2 shadow-sm">
                             Get in Touch <span className="material-symbols-outlined text-sm">chat_bubble</span>
                         </Link>
                     </div>
                 </motion.div>
             </div>
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-30">
-                <span className="material-symbols-outlined text-midnight animate-bounce dark:text-white">expand_more</span>
+                <span className="material-symbols-outlined text-text-main animate-bounce">expand_more</span>
             </div>
         </section>
     );

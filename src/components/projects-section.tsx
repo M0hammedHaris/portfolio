@@ -23,9 +23,9 @@ export function ProjectsSection() {
         <section className="py-24" id="projects">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-midnight dark:text-white">SaaS & Innovation</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-midnight">SaaS & Innovation</h2>
                     <div className="h-1.5 w-16 bg-primary mx-auto rounded-full"></div>
-                    <p className="mt-6 text-slate-500 max-w-xl mx-auto dark:text-slate-400">Exploring the intersection of performance and utility through custom-built software solutions.</p>
+                    <p className="mt-6 text-text-muted max-w-xl mx-auto">Exploring the intersection of performance and utility through custom-built software solutions.</p>
                 </div>
                 <motion.div
                     variants={container}
@@ -35,18 +35,18 @@ export function ProjectsSection() {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {DATA.projects.map((project, index) => (
-                        <motion.div key={index} variants={item} className="group soft-card rounded-2xl overflow-hidden flex flex-col dark:border-slate-800 dark:bg-slate-900">
-                            <div className={`h-48 flex items-center justify-center border-b border-slate-100 dark:border-slate-800 ${index % 2 === 0 ? 'bg-blue-50 dark:bg-blue-900/20' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
-                                <span className={`material-symbols-outlined text-6xl ${index % 2 === 0 ? 'text-primary/30' : 'text-slate-300 dark:text-slate-600'}`}>
+                        <motion.div key={index} variants={item} className="group soft-card rounded-2xl overflow-hidden flex flex-col">
+                            <div className={`h-48 flex items-center justify-center border-b border-border-subtle ${index % 2 === 0 ? 'bg-primary/5' : 'bg-surface/50'}`}>
+                                <span className={`material-symbols-outlined text-6xl ${index % 2 === 0 ? 'text-primary/30' : 'text-text-muted/30'}`}>
                                     {index === 0 ? 'account_balance_wallet' : index === 1 ? 'shopping_bag' : 'security'}
                                 </span>
                             </div>
                             <div className="p-8 flex-1 flex flex-col">
-                                <h3 className="text-xl font-bold mb-3 text-midnight dark:text-white">{project.title}</h3>
-                                <p className="text-sm text-slate-600 mb-6 leading-relaxed dark:text-slate-400">{project.description}</p>
+                                <h3 className="text-xl font-bold mb-3 text-midnight">{project.title}</h3>
+                                <p className="text-sm text-text-main opacity-80 mb-6 leading-relaxed">{project.description}</p>
                                 <div className="flex flex-wrap gap-2 mb-8">
                                     {project.tech.map(t => (
-                                        <span key={t} className="text-[10px] font-bold uppercase px-2 py-1 bg-white border border-slate-200 rounded text-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400">{t}</span>
+                                        <span key={t} className="text-[10px] font-bold uppercase px-2 py-1 bg-background border border-border-subtle rounded text-text-muted">{t}</span>
                                     ))}
                                 </div>
                                 <a
