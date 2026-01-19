@@ -6,7 +6,7 @@ import { DATA } from '@/lib/data';
 
 export function HeroSection() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-16 pb-16 overflow-hidden bg-background">
+        <section className="relative min-h-screen flex items-start md:items-center justify-center pt-32 pb-16 md:pt-16 overflow-hidden bg-background">
             <div className="absolute inset-0 grid-lines-light -z-10"></div>
             <div className="max-w-4xl mx-auto px-6 text-center">
                 <motion.div

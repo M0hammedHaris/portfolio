@@ -3,7 +3,7 @@ export const DATA = {
   title: "Full Stack Engineer | Backend Specialist",
   bio: "Software Engineer with 4+ years of experience in product-based development, specializing in backend systems, full stack applications, and infrastructure automation. Core skills include Python, Frappe, Java (microservices), and React.js.",
   email: "mohammedharis.k.01@gmail.com",
-  avatarUrl: "/me.jpg",
+  avatarUrl: "/me.jpeg",
   initials: "MH",
   social: {
     github: "https://github.com/M0hammedHaris",
