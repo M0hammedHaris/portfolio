@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { DATA } from '@/lib/data';
 import { ProjectModal } from '@/components/ui/modal';
+import { Wallet, ShoppingBag, Shield, ExternalLink, Code2 } from 'lucide-react';
 
 const container = {
     hidden: { opacity: 0 },
@@ -38,9 +39,13 @@ export function ProjectsSection() {
                     {DATA.projects.map((project, index) => (
                         <motion.div key={index} variants={item} className="group soft-card rounded-2xl overflow-hidden flex flex-col">
                             <div className={`h-48 flex items-center justify-center border-b border-border-subtle ${index % 2 === 0 ? 'bg-primary/5' : 'bg-surface/50'}`}>
-                                <span className={`material-symbols-outlined text-6xl ${index % 2 === 0 ? 'text-primary/30' : 'text-text-muted/30'}`}>
-                                    {index === 0 ? 'account_balance_wallet' : index === 1 ? 'shopping_bag' : 'security'}
-                                </span>
+                                {index === 0 || index === 1 ? (
+                                    <Wallet size={64} strokeWidth={1} className={index % 2 === 0 ? 'text-primary/30' : 'text-text-muted/30'} />
+                                ) : index === 2 ? (
+                                    <ShoppingBag size={64} strokeWidth={1} className={index % 2 === 0 ? 'text-primary/30' : 'text-text-muted/30'} />
+                                ) : (
+                                    <Shield size={64} strokeWidth={1} className={index % 2 === 0 ? 'text-primary/30' : 'text-text-muted/30'} />
+                                )}
                             </div>
                             <div className="p-8 flex-1 flex flex-col">
                                 <h3 className="text-xl font-bold mb-3 text-midnight">{project.title}</h3>
@@ -68,7 +73,13 @@ export function ProjectsSection() {
                                         aria-label={`Visit ${project.title} ${project.link.includes('github') ? 'repository' : 'website'} (opens in new window)`}
                                         className="flex-1 px-4 py-2 bg-primary text-white font-bold rounded-lg hover:bg-primary-hover transition-colors text-sm text-center"
                                     >
-                                        {project.link.includes('github') ? 'View Code' : 'Live Demo'}
+                                        <div className="flex items-center justify-center gap-2">
+                                            {project.link.includes('github') ? (
+                                                <>View Code <Code2 size={14} /></>
+                                            ) : (
+                                                <>Live Demo <ExternalLink size={14} /></>
+                                            )}
+                                        </div>
                                     </a>
                                 </div>
                             </div>

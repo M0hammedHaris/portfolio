@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DATA } from '@/lib/data';
+import { ArrowRight, MessageSquare, ChevronDown } from 'lucide-react';
 
 export function HeroSection() {
     return (
@@ -37,25 +38,25 @@ export function HeroSection() {
                         {DATA.bio}
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link 
-                            href="#projects" 
+                        <Link
+                            href="#projects"
                             aria-label="View my projects portfolio"
                             className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/30"
                         >
-                            View Projects <span aria-hidden="true" className="material-symbols-outlined text-sm">arrow_forward</span>
+                            View Projects <ArrowRight size={18} strokeWidth={2.5} />
                         </Link>
-                        <Link 
-                            href="#contact" 
+                        <Link
+                            href="#contact"
                             aria-label="Get in touch with me"
                             className="w-full sm:w-auto px-8 py-4 bg-background border border-border-subtle text-foreground font-bold rounded-xl hover:bg-surface hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm"
                         >
-                            Get in Touch <span aria-hidden="true" className="material-symbols-outlined text-sm">chat_bubble</span>
+                            Get in Touch <MessageSquare size={18} strokeWidth={2.5} />
                         </Link>
                     </div>
                 </motion.div>
             </div>
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-30">
-                <span className="material-symbols-outlined text-text-main animate-bounce">expand_more</span>
+                <ChevronDown className="text-text-main animate-bounce" size={24} />
             </div>
         </section>
     );

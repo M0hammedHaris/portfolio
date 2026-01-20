@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { DATA } from '@/lib/data';
+import { Briefcase, Calendar, Building2 } from 'lucide-react';
 
 export function ExperienceSection() {
     return (
@@ -15,11 +16,21 @@ export function ExperienceSection() {
                     <div className="absolute left-0 md:left-1/2 md:-translate-x-px top-2 bottom-2 w-0.5 bg-border-subtle"></div>
                     {DATA.experience.map((exp, index) => (
                         <div key={index} className="relative md:flex md:justify-between items-start group">
-                            <div className={`absolute left-[-5.5px] md:left-1/2 md:-translate-x-1/2 w-3.5 h-3.5 rounded-full ring-4 ring-background shadow-sm z-10 ${index === 0 ? 'bg-primary' : index === 1 ? 'bg-text-muted transition-colors' : 'bg-border-subtle transition-colors'}`}></div>
+                            <div className={`absolute left-[-10px] md:left-1/2 md:-translate-x-1/2 w-5 h-5 rounded-full ring-4 ring-background shadow-sm z-10 flex items-center justify-center ${index === 0 ? 'bg-primary' : 'bg-slate-200 dark:bg-slate-700'}`}>
+                                {index === 0 ? (
+                                    <Briefcase size={10} className="text-white" />
+                                ) : (
+                                    <div className="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                                )}
+                            </div>
                             <div className={`pl-8 md:pl-0 md:w-[45%] pt-0 ${index % 2 === 0 ? 'md:text-right' : 'md:order-2 md:text-left'}`}>
-                                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">{exp.dates}</p>
+                                <p className={`text-xs font-bold text-primary uppercase tracking-widest mb-1 flex items-center gap-2 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
+                                    <Calendar size={12} /> {exp.dates}
+                                </p>
                                 <h4 className="text-xl font-extrabold text-midnight">{exp.role}</h4>
-                                <p className="text-text-muted font-semibold text-sm">{exp.company}</p>
+                                <p className={`text-text-muted font-semibold text-sm flex items-center gap-2 mt-1 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
+                                    <Building2 size={14} /> {exp.company}
+                                </p>
                             </div>
                             <div className={`pl-8 md:pl-0 md:w-[45%] mt-4 md:mt-0 ${index % 2 === 0 ? '' : 'md:order-1'}`}>
                                 <motion.div

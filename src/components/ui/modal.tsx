@@ -2,6 +2,7 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
+import { ExternalLink, Code2 } from "lucide-react";
 
 interface Project {
   title: string;
@@ -34,7 +35,7 @@ export function ProjectModal({ project, children }: ProjectModalProps) {
               {project.description}
             </p>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-3 text-midnight">Technologies Used</h3>
             <div className="flex flex-wrap gap-2">
@@ -45,7 +46,7 @@ export function ProjectModal({ project, children }: ProjectModalProps) {
               ))}
             </div>
           </div>
-          
+
           <div className="pt-4 border-t border-border-subtle">
             <a
               href={project.link}
@@ -54,10 +55,11 @@ export function ProjectModal({ project, children }: ProjectModalProps) {
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors"
               aria-label={`Visit ${project.title} ${project.link.includes('github') ? 'repository' : 'website'} (opens in new window)`}
             >
-              {project.link.includes('github') ? 'View Code' : 'Visit Site'}
-              <span aria-hidden="true" className="material-symbols-outlined text-sm">
-                open_in_new
-              </span>
+              {project.link.includes('github') ? (
+                <>View Code <Code2 size={16} /></>
+              ) : (
+                <>Visit Site <ExternalLink size={16} /></>
+              )}
             </a>
           </div>
         </div>

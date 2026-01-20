@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { DATA } from '@/lib/data';
 import { toast } from '@/components/ui/toast';
+import { Mail, Linkedin, Send } from 'lucide-react';
 
 interface FormData {
     name: string;
@@ -50,21 +51,21 @@ export function ContactSection() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (!validateForm()) {
             toast.error('Please fix the errors in the form');
             return;
         }
 
         setIsSubmitting(true);
-        
+
         try {
             // Simulate form submission
             await new Promise(resolve => setTimeout(resolve, 1000));
-            
+
             // In a real app, you would send the data to your backend
             console.log('Form submitted:', formData);
-            
+
             toast.success('Message sent successfully! I&apos;ll get back to you soon.');
             setFormData({ name: '', email: '', message: '' });
             setErrors({});
@@ -97,22 +98,22 @@ export function ContactSection() {
                             Whether you have a groundbreaking idea or need technical expertise to scale your platform, I&apos;m here to help you achieve your goals.
                         </p>
                         <div className="space-y-4">
-                            <a 
-                                href={DATA.social.email} 
+                            <a
+                                href={DATA.social.email}
                                 aria-label={`Send email to ${DATA.email}`}
                                 className="flex items-center gap-4 p-4 bg-background rounded-xl shadow-sm border border-border-subtle hover:border-primary/30 transition-colors group"
                             >
-                                <span aria-hidden="true" className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">mail</span>
+                                <Mail className="text-primary group-hover:scale-110 transition-transform" size={20} />
                                 <span className="font-semibold text-midnight">{DATA.email}</span>
                             </a>
-                            <a 
-                                href={DATA.social.linkedin} 
-                                target="_blank" 
+                            <a
+                                href={DATA.social.linkedin}
+                                target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Visit my LinkedIn profile (opens in new window)"
                                 className="flex items-center gap-4 p-4 bg-background rounded-xl shadow-sm border border-border-subtle hover:border-primary/30 transition-colors group"
                             >
-                                <span aria-hidden="true" className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">share</span>
+                                <Linkedin className="text-primary group-hover:scale-110 transition-transform" size={20} />
                                 <span className="font-semibold text-midnight">LinkedIn Profile</span>
                             </a>
                         </div>
@@ -122,19 +123,18 @@ export function ContactSection() {
                             <label htmlFor="contact-name" className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
                                 Name *
                             </label>
-                            <input 
+                            <input
                                 id="contact-name"
-                                type="text" 
+                                type="text"
                                 required
                                 aria-required="true"
                                 aria-invalid={errors.name ? 'true' : 'false'}
                                 aria-describedby={errors.name ? 'name-error' : undefined}
                                 value={formData.name}
                                 onChange={(e) => handleInputChange('name', e.target.value)}
-                                className={`w-full bg-surface border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary-hover transition-all ${
-                                    errors.name ? 'border-red-500' : 'border-border-subtle'
-                                }`}
-                                placeholder="John Doe" 
+                                className={`w-full bg-surface border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary-hover transition-all ${errors.name ? 'border-red-500' : 'border-border-subtle'
+                                    }`}
+                                placeholder="John Doe"
                             />
                             {errors.name && (
                                 <span id="name-error" className="text-red-500 text-sm mt-1 block" role="alert">
@@ -146,19 +146,18 @@ export function ContactSection() {
                             <label htmlFor="contact-email" className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
                                 Email *
                             </label>
-                            <input 
+                            <input
                                 id="contact-email"
-                                type="email" 
+                                type="email"
                                 required
                                 aria-required="true"
                                 aria-invalid={errors.email ? 'true' : 'false'}
                                 aria-describedby={errors.email ? 'email-error' : undefined}
                                 value={formData.email}
                                 onChange={(e) => handleInputChange('email', e.target.value)}
-                                className={`w-full bg-surface border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary-hover transition-all ${
-                                    errors.email ? 'border-red-500' : 'border-border-subtle'
-                                }`}
-                                placeholder="john@example.com" 
+                                className={`w-full bg-surface border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary-hover transition-all ${errors.email ? 'border-red-500' : 'border-border-subtle'
+                                    }`}
+                                placeholder="john@example.com"
                             />
                             {errors.email && (
                                 <span id="email-error" className="text-red-500 text-sm mt-1 block" role="alert">
@@ -170,7 +169,7 @@ export function ContactSection() {
                             <label htmlFor="contact-message" className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
                                 Message *
                             </label>
-                            <textarea 
+                            <textarea
                                 id="contact-message"
                                 required
                                 aria-required="true"
@@ -178,9 +177,8 @@ export function ContactSection() {
                                 aria-describedby={errors.message ? 'message-error' : undefined}
                                 value={formData.message}
                                 onChange={(e) => handleInputChange('message', e.target.value)}
-                                className={`w-full bg-surface border rounded-lg px-4 py-3 text-text-main h-32 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary-hover transition-all resize-none ${
-                                    errors.message ? 'border-red-500' : 'border-border-subtle'
-                                }`}
+                                className={`w-full bg-surface border rounded-lg px-4 py-3 text-text-main h-32 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary-hover transition-all resize-none ${errors.message ? 'border-red-500' : 'border-border-subtle'
+                                    }`}
                                 placeholder="Tell me about your project..."
                             />
                             {errors.message && (
@@ -189,17 +187,20 @@ export function ContactSection() {
                                 </span>
                             )}
                         </div>
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             disabled={isSubmitting}
                             aria-label={isSubmitting ? 'Sending message...' : 'Send message'}
-                            className={`w-full font-bold py-4 rounded-xl shadow-lg text-sm uppercase tracking-wide transition-all ${
-                                isSubmitting 
-                                    ? 'bg-gray-400 cursor-not-allowed' 
+                            className={`w-full font-bold py-4 rounded-xl shadow-lg text-sm uppercase tracking-wide transition-all ${isSubmitting
+                                    ? 'bg-gray-400 cursor-not-allowed'
                                     : 'bg-primary text-white shadow-primary/30 hover:bg-primary-hover hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 active:translate-y-0'
-                            }`}
+                                }`}
                         >
-                            {isSubmitting ? 'Sending...' : 'Send Message'}
+                            <div className="flex items-center justify-center gap-2">
+                                {isSubmitting ? 'Sending...' : (
+                                    <>Send Message <Send size={16} /></>
+                                )}
+                            </div>
                         </button>
                     </form>
                 </div>

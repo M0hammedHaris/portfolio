@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { DATA } from '@/lib/data';
+import { User, Cpu } from 'lucide-react';
 
 export function AboutSection() {
     return (
@@ -20,7 +21,7 @@ export function AboutSection() {
                         className="md:col-span-2 p-10 rounded-2xl soft-card"
                     >
                         <h3 className="text-2xl font-bold mb-6 flex items-center gap-3 text-midnight">
-                            <span className="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">person_search</span>
+                            <User className="text-primary bg-primary/10 p-2 rounded-lg" size={40} />
                             Profile Summary
                         </h3>
                         <p className="text-text-main leading-relaxed text-lg mb-8 opacity-80">
@@ -54,7 +55,7 @@ export function AboutSection() {
                         className="p-10 rounded-2xl soft-card"
                     >
                         <h3 className="text-xl font-bold mb-8 flex items-center gap-3 text-midnight">
-                            <span className="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">integration_instructions</span>
+                            <Cpu className="text-primary bg-primary/10 p-2 rounded-lg" size={40} />
                             Tech Arsenal
                         </h3>
                         <div className="space-y-8">
