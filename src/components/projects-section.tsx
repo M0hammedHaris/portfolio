@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { DATA } from '@/lib/data';
+import { ProjectModal } from '@/components/ui/modal';
 
 const container = {
     hidden: { opacity: 0 },
@@ -43,20 +44,33 @@ export function ProjectsSection() {
                             </div>
                             <div className="p-8 flex-1 flex flex-col">
                                 <h3 className="text-xl font-bold mb-3 text-midnight">{project.title}</h3>
-                                <p className="text-sm text-text-main opacity-80 mb-6 leading-relaxed">{project.description}</p>
+                                <p className="text-sm text-text-main opacity-80 mb-6 leading-relaxed line-clamp-3">{project.description}</p>
                                 <div className="flex flex-wrap gap-2 mb-8">
-                                    {project.tech.map(t => (
+                                    {project.tech.slice(0, 3).map(t => (
                                         <span key={t} className="text-[10px] font-bold uppercase px-2 py-1 bg-background border border-border-subtle rounded text-text-muted">{t}</span>
                                     ))}
+                                    {project.tech.length > 3 && (
+                                        <span className="text-[10px] font-bold uppercase px-2 py-1 bg-background border border-border-subtle rounded text-text-muted">
+                                            +{project.tech.length - 3} more
+                                        </span>
+                                    )}
                                 </div>
-                                <a
-                                    href={project.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-primary group-hover:gap-3 transition-all"
-                                >
-                                    {project.link.includes('github') ? 'View Code' : 'Live Demo'} <span className="material-symbols-outlined text-sm">arrow_outward</span>
-                                </a>
+                                <div className="mt-auto flex gap-3">
+                                    <ProjectModal project={project}>
+                                        <button className="flex-1 px-4 py-2 bg-surface border border-border-subtle text-text-main font-bold rounded-lg hover:bg-background transition-colors text-sm">
+                                            View Details
+                                        </button>
+                                    </ProjectModal>
+                                    <a
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={`Visit ${project.title} ${project.link.includes('github') ? 'repository' : 'website'} (opens in new window)`}
+                                        className="flex-1 px-4 py-2 bg-primary text-white font-bold rounded-lg hover:bg-primary-hover transition-colors text-sm text-center"
+                                    >
+                                        {project.link.includes('github') ? 'View Code' : 'Live Demo'}
+                                    </a>
+                                </div>
                             </div>
                         </motion.div>
                     ))}

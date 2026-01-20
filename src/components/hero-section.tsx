@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { DATA } from '@/lib/data';
 
 export function HeroSection() {
@@ -16,10 +17,13 @@ export function HeroSection() {
                 >
                     <div className="mb-8 relative inline-block">
                         <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl"></div>
-                        <img
-                            alt={DATA.name}
-                            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background shadow-xl"
+                        <Image
+                            alt={`${DATA.name} - Full Stack Software Engineer`}
                             src={DATA.avatarUrl}
+                            width={160}
+                            height={160}
+                            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background shadow-xl"
+                            priority
                         />
                     </div>
                     <p className="text-primary font-mono text-xs tracking-[0.2em] uppercase mb-4 font-bold">FULL STACK DEVELOPER</p>
@@ -33,11 +37,19 @@ export function HeroSection() {
                         {DATA.bio}
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="#projects" className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/30">
-                            View Projects <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                        <Link 
+                            href="#projects" 
+                            aria-label="View my projects portfolio"
+                            className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/30"
+                        >
+                            View Projects <span aria-hidden="true" className="material-symbols-outlined text-sm">arrow_forward</span>
                         </Link>
-                        <Link href="#contact" className="w-full sm:w-auto px-8 py-4 bg-background border border-border-subtle text-foreground font-bold rounded-xl hover:bg-surface hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm">
-                            Get in Touch <span className="material-symbols-outlined text-sm">chat_bubble</span>
+                        <Link 
+                            href="#contact" 
+                            aria-label="Get in touch with me"
+                            className="w-full sm:w-auto px-8 py-4 bg-background border border-border-subtle text-foreground font-bold rounded-xl hover:bg-surface hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm"
+                        >
+                            Get in Touch <span aria-hidden="true" className="material-symbols-outlined text-sm">chat_bubble</span>
                         </Link>
                     </div>
                 </motion.div>

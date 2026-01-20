@@ -1,5 +1,3 @@
-'use client';
-
 import { DATA } from '@/lib/data';
 
 export function Footer() {

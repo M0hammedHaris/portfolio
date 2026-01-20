@@ -77,6 +77,13 @@
     .theme-toggle-shadow {
         box-shadow: 0 0 15px 2px var(--sun-glow);
     }
+
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 }
 
 html {
