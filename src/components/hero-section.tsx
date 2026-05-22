@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { DATA } from '@/lib/data';
 import { ArrowRight, MessageSquare, ChevronDown, CheckCircle2 } from 'lucide-react';
+import avatarImage from '../../public/me.jpeg';
 
 export function HeroSection() {
     return (
@@ -22,7 +23,7 @@ export function HeroSection() {
                         <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl"></div>
                         <Image
                             alt={`${DATA.name} - Full Stack Software Engineer`}
-                            src={DATA.avatarUrl}
+                            src={avatarImage}
                             width={160}
                             height={160}
                             className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background shadow-xl"
