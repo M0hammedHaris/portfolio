@@ -1,0 +1,27 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md", ".kiro/steering/*.md"],
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": ["pnpm", "exec", "playwright-mcp"],
+      "enabled": true,
+      "timeout": 30000
+    },
+    "context7": {
+      "type": "local",
+      "command": ["pnpm", "exec", "context7-mcp"],
+      "enabled": true,
+      "timeout": 30000
+    }
+  },
+  "permission": {
+    "external_directory": {
+      "*": "ask"
+    }
+  },
+  "tool_output": {
+    "max_lines": 2000,
+    "max_bytes": 51200
+  }
+}

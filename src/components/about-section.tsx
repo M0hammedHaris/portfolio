@@ -29,7 +29,7 @@ export function AboutSection() {
                         </p>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div className="p-5 rounded-xl bg-background border border-border-subtle text-center">
-                                <div className="text-3xl font-bold text-primary mb-1">4+</div>
+                                <div className="text-3xl font-bold text-primary mb-1">5+</div>
                                 <div className="text-[10px] uppercase text-text-muted font-bold tracking-widest">Years Exp</div>
                             </div>
                             <div className="p-5 rounded-xl bg-background border border-border-subtle text-center">

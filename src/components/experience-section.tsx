@@ -6,9 +6,11 @@ import { Briefcase, Calendar, Building2 } from 'lucide-react';
 
 export function ExperienceSection() {
     return (
-        <section className="py-24 bg-surface" id="experience">
+        <section className="relative overflow-hidden py-24 bg-surface" id="experience">
+            <div className="absolute left-0 top-20 h-64 w-64 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"></div>
             <div className="max-w-4xl mx-auto px-6">
                 <div className="text-center mb-16">
+                    <p className="mb-3 font-mono text-xs font-bold uppercase tracking-[0.25em] text-primary">5+ years in production teams</p>
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-midnight">Career Timeline</h2>
                     <div className="h-1.5 w-16 bg-primary mx-auto rounded-full"></div>
                 </div>
@@ -38,11 +40,16 @@ export function ExperienceSection() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
-                                    className={`p-6 rounded-2xl bg-card-bg border border-border-subtle shadow-sm hover:border-primary/30 transition-colors ${index % 2 !== 0 ? 'md:text-right' : ''}`}
+                                    className={`p-6 rounded-2xl bg-card-bg border border-border-subtle shadow-sm hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg transition-all ${index % 2 !== 0 ? 'md:text-right' : ''}`}
                                 >
-                                    <p className="text-text-main text-sm leading-relaxed opacity-80">
-                                        {exp.description}
-                                    </p>
+                                    <ul className={`space-y-3 ${index % 2 !== 0 ? 'md:text-right' : ''}`}>
+                                        {exp.description.split('\n').map(item => (
+                                            <li key={item} className={`flex gap-3 text-sm leading-relaxed text-text-main/80 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+                                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"></span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </motion.div>
                             </div>
                         </div>

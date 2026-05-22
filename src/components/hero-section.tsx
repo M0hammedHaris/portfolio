@@ -4,13 +4,15 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DATA } from '@/lib/data';
-import { ArrowRight, MessageSquare, ChevronDown } from 'lucide-react';
+import { ArrowRight, MessageSquare, ChevronDown, CheckCircle2 } from 'lucide-react';
 
 export function HeroSection() {
     return (
         <section className="relative min-h-screen flex items-start md:items-center justify-center pt-32 pb-16 md:pt-16 overflow-hidden bg-background">
             <div className="absolute inset-0 grid-lines-light -z-10"></div>
-            <div className="max-w-4xl mx-auto px-6 text-center">
+            <div className="absolute -top-28 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl md:h-96 md:w-96"></div>
+            <div className="absolute bottom-20 right-0 h-60 w-60 rounded-full bg-slate-500/10 blur-3xl dark:bg-white/5"></div>
+            <div className="max-w-5xl mx-auto px-6 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -26,6 +28,13 @@ export function HeroSection() {
                             className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background shadow-xl"
                             priority
                         />
+                    </div>
+                    <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+                        {DATA.highlights.map(highlight => (
+                            <span key={highlight} className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-primary">
+                                <CheckCircle2 size={12} /> {highlight}
+                            </span>
+                        ))}
                     </div>
                     <p className="text-primary font-mono text-xs tracking-[0.2em] uppercase mb-4 font-bold">FULL STACK DEVELOPER</p>
                     <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight text-midnight">
@@ -52,6 +61,18 @@ export function HeroSection() {
                         >
                             Get in Touch <MessageSquare size={18} strokeWidth={2.5} />
                         </Link>
+                    </div>
+                    <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                        {[
+                            ['Product Engineering', 'SaaS features, workflows, and business logic'],
+                            ['Backend Depth', 'Frappe, Python APIs, Java services, and SQL'],
+                            ['Delivery Systems', 'AWS, Nginx, Jenkins, and automation'],
+                        ].map(([title, description]) => (
+                            <div key={title} className="rounded-2xl border border-border-subtle bg-background/80 p-4 text-left shadow-sm backdrop-blur">
+                                <p className="text-sm font-extrabold text-midnight">{title}</p>
+                                <p className="mt-1 text-xs leading-relaxed text-text-muted">{description}</p>
+                            </div>
+                        ))}
                     </div>
                 </motion.div>
             </div>

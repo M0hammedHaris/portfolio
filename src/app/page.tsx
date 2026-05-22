@@ -20,7 +20,7 @@ const ContactSection = dynamic(() => import('@/components/contact-section').then
 
 export default function Home() {
   return (
-    <main id="main" className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/20">
+    <main id="main" className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/20 [background-image:radial-gradient(circle_at_top_left,rgba(255,127,80,0.08),transparent_28rem)]">
       <Navbar />
       <HeroSection />
       <AboutSection />

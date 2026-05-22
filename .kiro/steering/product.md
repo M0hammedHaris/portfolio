@@ -1,6 +1,6 @@
 # Product Overview
 
-This is a personal portfolio website for Mohammed Haris, a Full Stack Software Engineer with 4+ years of experience specializing in backend systems and full stack applications.
+This is a personal portfolio website for Mohammed Haris, a Full Stack Software Engineer with 5+ years of experience specializing in backend systems and full stack applications.
 
 ## Key Features
 

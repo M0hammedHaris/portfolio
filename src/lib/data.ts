@@ -1,7 +1,7 @@
 export const DATA = {
   name: "Mohammed Haris",
   title: "Full Stack Engineer | Backend Specialist",
-  bio: "Software Engineer with 4+ years of experience in product-based development, specializing in backend systems, full stack applications, and infrastructure automation. Core skills include Python, Frappe, Java (microservices), and React.js.",
+  bio: "Software Engineer with 5+ years of experience in product-based development, specializing in backend systems, full stack applications, and infrastructure automation. Core skills include Python, Frappe, Java (microservices), and React.js.",
   email: "mohammedharis.k.01@gmail.com",
   avatarUrl: "/me.jpeg",
   initials: "MH",
@@ -10,6 +10,7 @@ export const DATA = {
     linkedin: "https://www.linkedin.com/in/mohammed-haris-k/",
     email: "mailto:mohammedharis.k.01@gmail.com",
   },
+  highlights: ["5+ Years Experience", "Backend Systems", "Full Stack Delivery"],
   experience: [
     {
       company: "AssureAI",

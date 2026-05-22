@@ -25,6 +25,7 @@ export function ProjectsSection() {
         <section className="py-24" id="projects">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-16">
+                    <p className="mb-3 font-mono text-xs font-bold uppercase tracking-[0.25em] text-primary">Selected builds</p>
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-midnight">SaaS & Innovation</h2>
                     <div className="h-1.5 w-16 bg-primary mx-auto rounded-full"></div>
                     <p className="mt-6 text-text-muted max-w-xl mx-auto">Exploring the intersection of performance and utility through custom-built software solutions.</p>
@@ -37,8 +38,9 @@ export function ProjectsSection() {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {DATA.projects.map((project, index) => (
-                        <motion.div key={index} variants={item} className="group soft-card rounded-2xl overflow-hidden flex flex-col">
-                            <div className={`h-48 flex items-center justify-center border-b border-border-subtle ${index % 2 === 0 ? 'bg-primary/5' : 'bg-surface/50'}`}>
+                        <motion.div key={index} variants={item} className="group soft-card rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1">
+                            <div className={`relative h-48 flex items-center justify-center border-b border-border-subtle overflow-hidden ${index % 2 === 0 ? 'bg-primary/5' : 'bg-surface/50'}`}>
+                                <div className="absolute inset-6 rounded-full bg-primary/10 blur-2xl opacity-0 transition-opacity group-hover:opacity-100"></div>
                                 {index === 0 || index === 1 ? (
                                     <Wallet size={64} strokeWidth={1} className={index % 2 === 0 ? 'text-primary/30' : 'text-text-muted/30'} />
                                 ) : index === 2 ? (
@@ -48,6 +50,7 @@ export function ProjectsSection() {
                                 )}
                             </div>
                             <div className="p-8 flex-1 flex flex-col">
+                                <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Project {String(index + 1).padStart(2, '0')}</p>
                                 <h3 className="text-xl font-bold mb-3 text-midnight">{project.title}</h3>
                                 <p className="text-sm text-text-main opacity-80 mb-6 leading-relaxed line-clamp-3">{project.description}</p>
                                 <div className="flex flex-wrap gap-2 mb-8">
